@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Remote Control Car</title>
+        <!-- @TODO: add CSS to the file-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            button {
+                width:49%;
+                height:50px
+            }
+            
+            img {
+                width:350px;
+                height:350px;
+		image-rendering:pixelated;
+            }
+
+	    imgcont {
+		text-align:center
+                width:98%
+	    }
+
+            body {
+                -webkit-user-select: none;
+                -moz-user-select: -moz-none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <button id = 'fwd'>Forward</button>
+        <button id = 'bck'>Backward</button>
+        <br><br>
+        <button id = 'left'>Left</button>
+        <button id = 'right'>Right</button>
+        <br><br>
+        <button id = 'stop'>STOP</button>
+        <br><br>
+	<div id = 'imgcont'>
+        	<img id = 'image'></img>
+	</div>
+
+        <script type = 'text/javascript' src = 'static/scripts/main.js'></script>
+    </body>
+</html>
