@@ -2,12 +2,15 @@ from flask import Flask, render_template, Response
 from time import sleep
 from car import Car, PWMCar
 from camera import Camera
+from recorder import Recorder
 
 app = Flask(__name__)
 
 car = PWMCar(forward = 18, backward = 23, right = 14, left = 15, speed = 1)
 
 camera = Camera(resolution = 64, framerate = 30)
+
+recorder = Recorder(car = car, camera = camera, interval = 0.1)
 
 commands = {'left': car.left, 
             'right': car.right, 
@@ -27,6 +30,12 @@ def image():
     resp.headers['Cache-Control'] = 'no-cache'
 
     return resp
+
+@app.route('/record')
+def record():
+    print('Recording was toggled')
+    recorder.toggle_record()
+    return ('', 204)
 
 @app.route('/drive/<cmd>')
 def cmd(cmd):

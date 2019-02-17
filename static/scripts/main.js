@@ -1,5 +1,6 @@
-var REFRESHRATE = 200;
+var REFRESHRATE = 1000;
 var newImage;
+var recording = false;
 
 function sendRequest(route, callback){
     request = new XMLHttpRequest();
@@ -25,6 +26,14 @@ function updateImage() {
     newImage.src = "/image?" + Date.now()
 }
 
+function toggleRecord() {
+    sendRequest('record')
+
+    recording = !recording
+    
+    recordButton.innerText = recording?'Stop Recording':'Start Recording'
+}
+
 window.onload = function(){
     sendRequest('/stop'); // Stop the car if it is moving
 };
@@ -34,6 +43,7 @@ backwardButton = document.getElementById('bck');
 leftButton = document.getElementById('left');
 rightButton = document.getElementById('right');
 stopButton = document.getElementById('stop');
+recordButton = document.getElementById('record');
 
 addEventListeners(forwardButton, 'touchstart', function(){sendRequest('drive/forward')});
 addEventListeners(backwardButton, 'touchstart', function(){sendRequest('drive/backward')});
@@ -46,6 +56,7 @@ addEventListeners(backwardButton, 'touchend touchcancel', function(){sendRequest
 addEventListeners(leftButton, 'touchend touchcancel', function(){sendRequest('drive/straight')});
 addEventListeners(rightButton, 'touchend touchcancel', function(){sendRequest('drive/straight')});
 
+addEventListeners(recordButton, 'touchstart', toggleRecord);
 
 newImage = new Image();
 newImage.src = "/image?" + Date.now();
