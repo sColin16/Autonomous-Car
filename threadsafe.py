@@ -17,12 +17,3 @@ def threadsafe_generator(func):
         return threadsafe_iterator(func(*args))
 
     return g
-
-@threadsafe_generator
-def count():
-    i = 0
-    while True:
-        i += 1
-        yield i
-
-x = count()
