@@ -1,6 +1,7 @@
 from time import sleep
 from io import BytesIO
 from PIL import Image
+from threadsafe import threadsafe_generator
 
 import picamera
 import numpy as np
@@ -16,6 +17,7 @@ class Camera:
         self.resolution = resolution
         self.framerate = framerate
 
+    @threadsafe_generator
     def frame_gen(self):
         with picamera.PiCamera() as camera:
             camera.resolution = (self.resolution, self.resolution)
@@ -40,7 +42,7 @@ class Camera:
     def array(self):
         binary = self.binary()
 
-        pil = Image.open(BytesIO(get_binary()))
+        pil = Image.open(BytesIO(binary))
         arr = np.asarray(pil)
 
         return arr[:,:,0] # Only return one of the black and white color chanels
