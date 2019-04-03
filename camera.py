@@ -4,7 +4,6 @@ obtain pictures from the camera. Relies on a generator to return such images'''
 from time import sleep
 from io import BytesIO
 from PIL import Image
-from threadsafe import threadsafe_generator
 
 import picamera
 import numpy as np
