@@ -2,24 +2,24 @@
 <html>
     <head>
         <title>Remote Control Car</title>
-        <!-- @TODO: add CSS to the file-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             button {
                 width:49%;
-                height:50px
+                height:50px;
+                margin-bottom:10px;
             }
             
-            img {
-                width:350px;
-                height:350px;
-		image-rendering:pixelated;
+            #stop {
+                width:98%;
             }
 
-	    imgcont {
-		text-align:center
-                width:98%
-	    }
+            img {
+                width:50%;
+                height:50%;
+                padding-left:25%;
+		image-rendering:pixelated;
+            }
 
             body {
                 -webkit-user-select: none;
@@ -32,13 +32,14 @@
     <body>
         <button id = 'fwd'>Forward</button>
         <button id = 'bck'>Backward</button>
-        <br><br>
+
         <button id = 'left'>Left</button>
         <button id = 'right'>Right</button>
-        <br><br>
+
         <button id = 'stop'>STOP</button>
+
         <button id = 'record'>Start Recording</button>
-        <br><br>
+        <button id = 'auto'>Auto On</button>
 	<div id = 'imgcont'>
         	<img id = 'image'></img>
 	</div>
